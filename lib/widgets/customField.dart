@@ -5,6 +5,7 @@ class CustomTextField extends StatelessWidget {
   final String hintText; // Hint text for the TextField
   final TextEditingController? controller; // Controller for the TextField
   final Color fillColor; // Fill color for the TextField
+  final Icon? beforeicon;
   
   const CustomTextField({
     Key? key,
@@ -12,6 +13,8 @@ class CustomTextField extends StatelessWidget {
     this.hintText = '',
     this.controller,
     this.fillColor = const Color(0xFFF0F0F0), // Default fill color
+    this.beforeicon,
+    
   }) : super(key: key);
 
   @override
@@ -31,12 +34,13 @@ class CustomTextField extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        Container(
+        SizedBox(
           height: 50,
           width: 300,
           child: TextField(
             controller: controller,
             decoration: InputDecoration(
+              prefixIcon: beforeicon != null ? beforeicon : null,
               hintStyle: const TextStyle(
                 color: Color(0xFFB0B0B0), // Non-nullable color
                 fontFamily: "Poppins",

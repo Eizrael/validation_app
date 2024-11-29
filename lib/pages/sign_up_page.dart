@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navigation/pages/login_page.dart';
 import 'package:navigation/widgets/customField.dart';
+import 'package:navigation/widgets/passwordfield.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -67,17 +68,17 @@ class _SignUpPageState extends State<SignUpPage> {
       pass2label = "";
     }
 
-    if(pass2 != pass1) {
+    if(pass1.isEmpty || pass2.isEmpty || pass1 != pass2) {
       pass2fillcolor = lightred;
       pass1fillcolor = lightred;
       pass2label = "Password doesnt match!";
+      pass1label = "Password doesnt match";
     }else {
       pass2fillcolor = lightgreen;
+      pass1fillcolor = lightgreen;
       pass2label = "";
       pass1label = "";
-    }
-
-    
+    } 
   }
 
   @override
@@ -97,7 +98,7 @@ class _SignUpPageState extends State<SignUpPage> {
         child: Padding(
           padding: const EdgeInsets.all(25.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 "Hello! Register to get started",
@@ -120,13 +121,13 @@ class _SignUpPageState extends State<SignUpPage> {
                 controller: emailController,
                 fillColor: emailfillcolor
               ),
-              CustomTextField(
+              PasswordField(
                 label: pass1label,
                 hintText: "Password",
                 controller: passwordController,
                 fillColor: pass1fillcolor,
               ),
-              CustomTextField(
+              PasswordField(
                 label: pass2label,
                 hintText: "Confirm Password",
                 controller: confirmPasswordController,
