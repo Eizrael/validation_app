@@ -4,12 +4,14 @@ class CustomTextField extends StatelessWidget {
   final String label; // Text for the label
   final String hintText; // Hint text for the TextField
   final TextEditingController? controller; // Controller for the TextField
-
+  final Color fillColor; // Fill color for the TextField
+  
   const CustomTextField({
     Key? key,
     required this.label,
     this.hintText = '',
     this.controller,
+    this.fillColor = const Color(0xFFF0F0F0), // Default fill color
   }) : super(key: key);
 
   @override
@@ -42,7 +44,7 @@ class CustomTextField extends StatelessWidget {
               ),
               hintText: hintText,
               filled: true,
-              fillColor: const Color(0xFFF0F0F0), // Example fill color
+              fillColor: fillColor, // Use the passed fillColor here
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
                 borderSide: BorderSide.none,
